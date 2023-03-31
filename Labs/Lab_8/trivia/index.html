@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+        //Utilizamos el evento DOMContentLoaded para ejecutar cuando el documento este cargado
+        document.addEventListener("DOMContentLoaded",
+        function(){
+            let boton_correcto = document.querySelector("#correcto");
+            let boton_incorrecto = document.querySelectorAll(".incorrecto");
+            let mensaje = document.querySelector("#mensaje");
+
+            boton_correcto.addEventListener('click',
+            function(){
+                boton_correcto.style.backgroundColor = "green";
+                mensaje.innerHTML = "Correcto";
+            })
+
+            for (let i = 0; i < boton_incorrecto.length; i++)
+            {
+
+                boton_incorrecto[i].addEventListener('click',
+                function(){
+                    boton_incorrecto[i].style.backgroundColor = "red"
+                    mensaje.innerHTML = "Incorrecto";
+                })
+            }
+
+            document.querySelector("#boton-libre").addEventListener('click',
+                function(){
+                let input = document.querySelector("input");
+                let mensajeLibre = document.querySelector("#mensaje-libre");
+                if (input.value == "Jugador de Soccer")
+                {
+                    input.style.color = "green";
+                    mensajeLibre.innerHTML = "Correcto";
+                }
+                else {
+                    input.style.color = "red";
+                    mensajeLibre.innerHTML = "Incorrecto";
+                }
+            })
+});
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>¿Quien tiene mas goles en mismo club?</h3>
+                <h2 id="parte_1"></h2>
+                    <button id="correcto">Messi</button>
+                    <button class="incorrecto">Pele</button>
+                    <button class="incorrecto">Maradona</button>
+                    <button class="incorrecto">Cristiano Ronaldo</button>
+                    <p id="mensaje"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr class = "Resp-libre">
+                <!-- TODO: Add free response question here -->
+                <h3>¿Quien es messi?</h3>
+                <input type="text">
+                <button id="boton-libre">Comprobar</button>
+                <p id = "mensaje-libre"></p>
+            </div>
+        </div>
+    </body>
+</html>
